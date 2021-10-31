@@ -21,7 +21,7 @@ function runApplication() {
     icon: "./assets/favicon/favicon-32x32.png",
     height: 600,
     width: 800,
-    resizable: isDev ? true : false,
+    resizable: isDev ? true : true, //: false
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
