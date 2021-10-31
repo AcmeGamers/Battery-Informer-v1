@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, globalShortcut } = require("electron");
 
-process.env.NODE_ENV = "development";
+process.env.NODE_ENV = "production"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
   isMac = process.env.NODE_ENV === "darwin" ? true : false,
   isWin = process.env.NODE_ENV === "win32" ? true : false,
