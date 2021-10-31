@@ -1,0 +1,22 @@
+{
+  "name": "battery-informer-wu-react",
+  "version": "1.0.0",
+  "description": "Battery Informer, Material UI App",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AcmeGamers/battery-informer-wu-react.git"
+  },
+  "author": "Acme Gamers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AcmeGamers/battery-informer-wu-react/issues"
+  },
+  "homepage": "https://github.com/AcmeGamers/battery-informer-wu-react#readme",
+  "dependencies": {
+    "electron": "^15.3.0"
+  }
+}
