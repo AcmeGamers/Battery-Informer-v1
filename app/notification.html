@@ -1,0 +1,37 @@
+<!-- 
+    The button having the notification button
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battery Notifier</title>
+    <link rel="stylesheet" href="./mdl/material.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h3>Battery Notifier</h3>
+    <p>Your Battery has reached above 90%</p>
+    <!-- Primary-colored flat button -->
+    <button
+      class="
+        custom-button-posiition
+        mdl-button mdl-js-button
+        mdl-button--primary
+      "
+      id="close"
+      onclick="window.top.close(); return false"
+    >
+      Click Here
+    </button>
+  </body>
+</html>
+
+<script src="./mdl/material.min.js"></script>

@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, globalShortcut } = require("electron");
 
-process.env.NODE_ENV = "production"; //development
+process.env.NODE_ENV = "development"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
   isMac = process.env.NODE_ENV === "darwin" ? true : false,
   isWin = process.env.NODE_ENV === "win32" ? true : false,
@@ -13,32 +13,51 @@ console.log(process.platform);
 //////////////////////
 
 // Assignments
-let mainWindows, aboutWindows;
-
+let mainWindow, aboutWindow, notificationWindow;
+const icon = "./assets/favicon/favicon-32x32.png";
 // Main Application
 function runApplication() {
-  mainWindows = new BrowserWindow({
-    icon: "./assets/favicon/favicon-32x32.png",
-    height: 600,
-    width: 800,
+  mainWindow = new BrowserWindow({
+    icon: icon,
+    height: 500,
+    width: 628,
+
     resizable: isDev ? true : true, //: false
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
   });
-  isDev ? mainWindows.webContents.openDevTools() : null;
-  mainWindows.loadFile("./app/index.html");
+  mainWindow.center();
+  isDev ? mainWindow.webContents.openDevTools() : null;
+  mainWindow.loadFile("./app/about.html");
 }
 
 function aboutPage() {
-  aboutWindows = new BrowserWindow({
-    icon: "./assets/favicon/favicon-32x32.png",
+  aboutWindow = new BrowserWindow({
+    icon: icon,
     height: 450,
     width: 450,
     resizable: false,
   });
-  aboutWindows.loadFile("./app/about.html");
+  aboutWindow.loadFile("./app/about.html");
+}
+
+function notificationPage() {
+  notificationWindow = new BrowserWindow({
+    icon: "./assets/favicon/favicon-32x32.png",
+    height: 189,
+    width: 428,
+    frame: false,
+    resizable: isDev ? true : true, //: false
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
+  mainWindow.center();
+  isDev ? mainWindow.webContents.openDevTools() : null;
+  mainWindow.loadFile("./app/notification.html");
 }
 
 ///////////////////////
@@ -55,7 +74,7 @@ app.on("ready", () => {
   // Quit Menu
   globalShortcut.register("CmdOrCtrl+W", () => app.quit());
 
-  mainWindows.on("ready", () => (mainWindows = null));
+  mainWindow.on("ready", () => (mainWindow = null));
 });
 
 ///////////////////

@@ -1,0 +1,18 @@
+body {
+  padding: 20px;
+  overflow: hidden;
+  background: #fafafa;
+  position: relative;
+}
+h3 {
+  margin: 6px 0;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.custom-button-posiition {
+  float: right;
+  position: relative;
+  right: 3rem;
+  top: 1rem;
+}

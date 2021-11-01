@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="background">
+      <div class="center-box">
+        <div class="div1"></div>
+        <div class="div2">
+          <p class="font">I'm Acme Gamers</p>
+          <p class="font">React Engineer</p>
+          <p>A Dark Rider</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+  }
+  .background {
+    background: url(./assets/background.webp);
+    height: 100vh;
+    width: 100vw;
+  }
+  .center-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .div1 {
+    height: 85px;
+    width: 85px;
+    background: #0008ff;
+    border-radius: 50%;
+    float: left;
+    margin: 2rem;
+  }
+  .div2 {
+    width: 25rem;
+  }
+  .font {
+    line-height: 1.5;
+    font-size: 21px;
+    font-family: sans-serif;
+    color: white;
+  }
+</style>
