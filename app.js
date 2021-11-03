@@ -1,10 +1,4 @@
-const {
-  app,
-  BrowserWindow,
-  Menu,
-  globalShortcut,
-  ipcMain,
-} = require("electron");
+const { app, BrowserWindow, Menu, globalShortcut, Tray } = require("electron");
 
 process.env.NODE_ENV = "development"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
@@ -82,11 +76,13 @@ function notificationPage() {
 
 app.on("ready", () => {
   runApplication();
+
   // The Menu to be Made
   const mainmenu = Menu.buildFromTemplate(menu);
 
   // The Menu to Set
   Menu.setApplicationMenu(mainmenu);
+
   // Quit Menu
   globalShortcut.register("CmdOrCtrl+W", () => app.quit());
 
@@ -102,13 +98,13 @@ batteryLevel().then((level) => {
 
   console.log(totalBattery);
 
-  if (mainWindow) {
-    mainWindow.close();
-  }
+  // if (mainWindow) {
+  //   mainWindow.close();
+  // }
 
-  if (totalBattery > 50) {
-    notificationPage();
-  }
+  // if (totalBattery > 50) {
+  //   notificationPage();
+  // }
 });
 
 ///////////////////
@@ -170,3 +166,17 @@ const menu = [
       ]
     : []),
 ];
+
+// Application Tray Icon
+
+let tray = null;
+app.whenReady().then(() => {
+  tray = new Tray(__dirname + "\\assets\\battery.ico");
+  const contextMenu = Menu.buildFromTemplate([
+    { label: "About", click: () => aboutPage() },
+
+    { label: "Settings", click: () => notificationPage() },
+  ]);
+  tray.setToolTip("This is my application.");
+  tray.setContextMenu(contextMenu);
+});
