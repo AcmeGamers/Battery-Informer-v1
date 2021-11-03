@@ -24,19 +24,18 @@
 
     <div>
       <p>Set Limit</p>
-      <input type="text" />
+      <!-- Default Slider -->
+      <input
+        class="mdl-slider mdl-js-slider"
+        type="range"
+        min="0"
+        max="100"
+        value="90"
+        tabindex="0"
+      />
     </div>
     <button>Accept</button>
     <button id="close-btn" onclick="window.close()">Cancel</button>
   </body>
   <script src="./mdl/material.min.js"></script>
-  <script>
-    const { remote } = require("electron");
-
-    document
-      .getElementById("close-btn")
-      .addEventListener("click", function (e) {
-        remote.getCurrentWindow().close();
-      });
-  </script>
 </html>
