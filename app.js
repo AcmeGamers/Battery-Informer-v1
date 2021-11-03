@@ -9,16 +9,6 @@ const isDev = process.env.NODE_ENV !== "production" ? true : false,
 console.log(process.platform);
 
 //////////////////////
-// Battery Level Check
-//////////////////////
-const batteryLevel = require("battery-level");
-
-batteryLevel().then((level) => {
-  var totalBattery = level * 100;
-  console.log(totalBattery);
-});
-
-//////////////////////
 // Application Windows
 //////////////////////
 
@@ -93,9 +83,11 @@ app.on("ready", () => {
 ///////////////////////
 // Battery Main Process
 ///////////////////////
-
+const batteryLevel = require("battery-level");
 batteryLevel().then((level) => {
   var totalBattery = level * 100;
+  console.log(totalBattery);
+
   if (totalBattery > 50) {
     notificationPage();
   }
