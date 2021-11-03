@@ -29,6 +29,7 @@ const icon = "./assets/favicon/favicon-32x32.png";
 function runApplication() {
   mainWindow = new BrowserWindow({
     icon: icon,
+    title: "Battery Informer",
     width: 350,
     height: 400,
 
@@ -45,6 +46,7 @@ function runApplication() {
 
 function aboutPage() {
   aboutWindow = new BrowserWindow({
+    title: "About Battery Informer",
     icon: icon,
     width: 350,
     height: 400,
@@ -55,6 +57,7 @@ function aboutPage() {
 
 function notificationPage() {
   notificationWindow = new BrowserWindow({
+    title: "Notification Page",
     icon: "./assets/favicon/favicon-32x32.png",
     height: 189,
     width: 428,
@@ -85,6 +88,17 @@ app.on("ready", () => {
   globalShortcut.register("CmdOrCtrl+W", () => app.quit());
 
   mainWindow.on("ready", () => (mainWindow = null));
+});
+
+///////////////////////
+// Battery Main Process
+///////////////////////
+
+batteryLevel().then((level) => {
+  var totalBattery = level * 100;
+  if (totalBattery > 50) {
+    notificationPage();
+  }
 });
 
 ///////////////////
@@ -120,7 +134,9 @@ const menu = [
         },
         {
           label: "Help",
-          submenu: [{ label: "About " + app.name, click: () => aboutPage() }],
+          submenu: [
+            { label: "About Battery Informer", click: () => aboutPage() },
+          ],
         },
       ]),
 
