@@ -177,6 +177,6 @@ app.whenReady().then(() => {
 
     { label: "Settings", click: () => notificationPage() },
   ]);
-  tray.setToolTip("This is my application.");
+  tray.setToolTip("Bsttery Informer");
   tray.setContextMenu(contextMenu);
 });
