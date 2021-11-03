@@ -9,6 +9,16 @@ const isDev = process.env.NODE_ENV !== "production" ? true : false,
 console.log(process.platform);
 
 //////////////////////
+// Battery Level Check
+//////////////////////
+const batteryLevel = require("battery-level");
+
+batteryLevel().then((level) => {
+  var totalBattery = level * 100;
+  console.log(totalBattery);
+});
+
+//////////////////////
 // Application Windows
 //////////////////////
 
@@ -19,10 +29,10 @@ const icon = "./assets/favicon/favicon-32x32.png";
 function runApplication() {
   mainWindow = new BrowserWindow({
     icon: icon,
-    height: 500,
-    width: 628,
+    width: 350,
+    height: 400,
 
-    resizable: isDev ? true : true, //: false
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -36,8 +46,8 @@ function runApplication() {
 function aboutPage() {
   aboutWindow = new BrowserWindow({
     icon: icon,
-    height: 450,
-    width: 450,
+    width: 350,
+    height: 400,
     resizable: false,
   });
   aboutWindow.loadFile("./app/about.html");
@@ -49,7 +59,7 @@ function notificationPage() {
     height: 189,
     width: 428,
     frame: false,
-    resizable: isDev ? true : true, //: false
+    resizable: isDev ? true : false, //: false
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
