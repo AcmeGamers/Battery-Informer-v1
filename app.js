@@ -29,6 +29,7 @@ function runApplication() {
     width: 400,
 
     resizable: false,
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -80,6 +81,7 @@ function settingsPage() {
     height: 600,
     width: 800,
     resizable: false,
+    frame: false,
   });
   settingsWindow.center();
   settingsWindow.loadFile("./app/settings.html");

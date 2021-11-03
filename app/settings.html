@@ -13,11 +13,27 @@
   </head>
   <body>
     <div>
+      <h2>Settings</h2>
+      <button id="close-btn" onclick="window.close()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div>
       <p>Set Limit</p>
       <input type="text" />
     </div>
     <button>Accept</button>
-    <button>Cancel</button>
+    <button id="close-btn" onclick="window.close()">Cancel</button>
   </body>
   <script src="./mdl/material.min.js"></script>
+  <script>
+    const { remote } = require("electron");
+
+    document
+      .getElementById("close-btn")
+      .addEventListener("click", function (e) {
+        remote.getCurrentWindow().close();
+      });
+  </script>
 </html>
