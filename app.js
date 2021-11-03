@@ -30,7 +30,7 @@ function runApplication() {
     },
   });
   mainWindow.center();
-  isDev ? mainWindow.webContents.openDevTools() : null;
+  // isDev ? mainWindow.webContents.openDevTools() : null;
   mainWindow.loadFile("./app/about.html");
 }
 
@@ -58,8 +58,8 @@ function notificationPage() {
       contextIsolation: false,
     },
   });
+
   mainWindow.center();
-  isDev ? mainWindow.webContents.openDevTools() : null;
   mainWindow.loadFile("./app/notification.html");
 }
 
