@@ -13,7 +13,7 @@ console.log(process.platform);
 //////////////////////
 
 // Assignments
-let mainWindow, aboutWindow, notificationWindow;
+let mainWindow, aboutWindow, notificationWindow, settingsWindow;
 
 ////////////////////////
 /// Application Page ///
@@ -25,8 +25,8 @@ function runApplication() {
   mainWindow = new BrowserWindow({
     icon: icon,
     title: "Battery Informer",
-    width: 350,
-    height: 400,
+    height: 300,
+    width: 400,
 
     resizable: false,
     webPreferences: {
@@ -36,7 +36,7 @@ function runApplication() {
   });
   mainWindow.center();
   // isDev ? mainWindow.webContents.openDevTools() : null;
-  mainWindow.loadFile("./app/about.html");
+  mainWindow.loadFile("./app/settings.html");
 }
 
 //////////////////
@@ -68,6 +68,21 @@ function notificationPage() {
   });
   notificationWindow.center();
   notificationWindow.loadFile("./app/notification.html");
+}
+
+/////////////////////
+/// Settings Page ///
+/////////////////////
+function settingsPage() {
+  settingsWindow = new BrowserWindow({
+    title: "Settings",
+    icon: icon,
+    height: 600,
+    width: 800,
+    resizable: false,
+  });
+  settingsWindow.center();
+  settingsWindow.loadFile("./app/settings.html");
 }
 
 ///////////////////////
@@ -142,12 +157,8 @@ const menu = [
           label: "Help",
           submenu: [
             { label: "About Battery Informer", click: () => aboutPage() },
-          ],
-        },
-        {
-          label: "Notification Page",
-          submenu: [
             { label: "Notification Page", click: () => notificationPage() },
+            { label: "Settings", click: () => settingsPage() },
           ],
         },
       ]),
@@ -174,8 +185,8 @@ app.whenReady().then(() => {
   tray = new Tray(icon);
   const contextMenu = Menu.buildFromTemplate([
     { label: "About", click: () => aboutPage() },
-
     { label: "Settings", click: () => notificationPage() },
+    { label: "Exit", click: () => app.quit() },
   ]);
   tray.setToolTip("Bsttery Informer");
   tray.setContextMenu(contextMenu);
