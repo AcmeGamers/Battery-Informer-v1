@@ -66,15 +66,14 @@ function aboutPage() {
 function notificationPage() {
   notificationWindow = new BrowserWindow({
     title: "Notification Page",
-    icon: "./assets/favicon/favicon-32x32.png",
+    icon: icon,
     height: 189,
     width: 428,
+    resizable: false,
     frame: false,
-    resizable: isDev ? true : false, //: false
   });
-
-  mainWindow.center();
-  mainWindow.loadFile("./app/notification.html");
+  notificationWindow.center();
+  notificationWindow.loadFile("./app/notification.html");
 }
 
 ///////////////////////
@@ -103,13 +102,13 @@ batteryLevel().then((level) => {
 
   console.log(totalBattery);
 
-  // if (mainWindow) {
-  //   mainWindow.close();
-  // }
+  if (mainWindow) {
+    mainWindow.close();
+  }
 
-  // if (totalBattery > 50) {
-  //   notificationPage();
-  // }
+  if (totalBattery > 50) {
+    notificationPage();
+  }
 });
 
 ///////////////////
