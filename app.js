@@ -18,8 +18,8 @@ let mainWindow, aboutWindow, notificationWindow;
 ////////////////////////
 /// Application Page ///
 ////////////////////////
+const icon = __dirname + "\\assets\\battery-2.ico";
 
-const icon = "./assets/favicon/favicon-32x32.png";
 // Main Application
 function runApplication() {
   mainWindow = new BrowserWindow({
@@ -171,7 +171,7 @@ const menu = [
 
 let tray = null;
 app.whenReady().then(() => {
-  tray = new Tray(__dirname + "\\assets\\battery.ico");
+  tray = new Tray(icon);
   const contextMenu = Menu.buildFromTemplate([
     { label: "About", click: () => aboutPage() },
 
