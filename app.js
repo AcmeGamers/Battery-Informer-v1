@@ -1,4 +1,10 @@
-const { app, BrowserWindow, Menu, globalShortcut } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  Menu,
+  globalShortcut,
+  ipcMain,
+} = require("electron");
 
 process.env.NODE_ENV = "development"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
@@ -14,6 +20,11 @@ console.log(process.platform);
 
 // Assignments
 let mainWindow, aboutWindow, notificationWindow;
+
+////////////////////////
+/// Application Page ///
+////////////////////////
+
 const icon = "./assets/favicon/favicon-32x32.png";
 // Main Application
 function runApplication() {
@@ -34,6 +45,9 @@ function runApplication() {
   mainWindow.loadFile("./app/about.html");
 }
 
+//////////////////
+/// About Page ///
+//////////////////
 function aboutPage() {
   aboutWindow = new BrowserWindow({
     title: "About Battery Informer",
@@ -45,6 +59,10 @@ function aboutPage() {
   aboutWindow.loadFile("./app/about.html");
 }
 
+/////////////////////////
+/// Notification Page ///
+/////////////////////////
+
 function notificationPage() {
   notificationWindow = new BrowserWindow({
     title: "Notification Page",
@@ -53,10 +71,6 @@ function notificationPage() {
     width: 428,
     frame: false,
     resizable: isDev ? true : false, //: false
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-    },
   });
 
   mainWindow.center();
@@ -86,11 +100,16 @@ app.on("ready", () => {
 const batteryLevel = require("battery-level");
 batteryLevel().then((level) => {
   var totalBattery = level * 100;
+
   console.log(totalBattery);
 
-  if (totalBattery > 50) {
-    notificationPage();
-  }
+  // if (mainWindow) {
+  //   mainWindow.close();
+  // }
+
+  // if (totalBattery > 50) {
+  //   notificationPage();
+  // }
 });
 
 ///////////////////
@@ -128,6 +147,12 @@ const menu = [
           label: "Help",
           submenu: [
             { label: "About Battery Informer", click: () => aboutPage() },
+          ],
+        },
+        {
+          label: "Notification Page",
+          submenu: [
+            { label: "Notification Page", click: () => notificationPage() },
           ],
         },
       ]),
