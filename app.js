@@ -1,4 +1,11 @@
-const { app, BrowserWindow, Menu, globalShortcut, Tray } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  Menu,
+  globalShortcut,
+  Tray,
+  ipcMain,
+} = require("electron");
 
 process.env.NODE_ENV = "development"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
@@ -109,6 +116,11 @@ app.on("ready", () => {
 ///////////////////////
 // Battery Main Process
 ///////////////////////
+
+ipcMain.on("form:value", (e, options) => {
+  console.log(options);
+});
+
 const batteryLevel = require("battery-level");
 batteryLevel().then((level) => {
   var totalBattery = level * 100;

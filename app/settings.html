@@ -34,46 +34,66 @@
       </button>
     </div>
 
-    <div
-      class="slidecontainer"
-      style="display: flex; align-items: center; width: 90%"
-    >
-      <p style="width: 6rem; margin: 0">Set Limit</p>
-      <input
-        style="padding: 0 1rem; border: 0"
-        type="range"
-        min="1"
-        max="100"
-        value="50"
-        class="slider"
-        id="myRange"
-      />
-      <span id="demo"></span>
-    </div>
-    <div style="margin: 2rem 0; text-align: right">
-      <button
-        class="mdl-button mdl-js-button mdl-button--accent"
-        onclick="window.close()"
-      >
-        Cancel
-      </button>
+    <form id="form" class="slidecontainer">
+      <div style="display: flex; align-items: center; width: 90%">
+        <p style="width: 6rem; margin: 0">Set Limit</p>
+        <input
+          style="padding: 0 1rem; border: 0"
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="myRange"
+        />
+        <span id="rangeValue"></span>
+      </div>
 
-      <button
-        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-        onclick="window.close()"
-      >
-        Accept
-      </button>
-    </div>
+      <div style="margin: 2rem 0; text-align: right">
+        <button
+          class="
+            mdl-button mdl-js-button
+            mdl-button--accent
+            mdl-js-ripple-effect
+          "
+          onclick="window.close()"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="
+            mdl-button mdl-js-button
+            mdl-button--raised mdl-button--colored
+            mdl-js-ripple-effect
+          "
+        >
+          Accept
+        </button>
+      </div>
+    </form>
   </body>
   <script src="./mdl/material.min.js"></script>
   <script>
+    const { ipcRenderer } = require("electron");
+
+    // Slider
     var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
+    var output = document.getElementById("rangeValue");
+    sliderValue = output.innerHTML = slider.value;
 
     slider.oninput = function () {
       output.innerHTML = this.value;
     };
+
+    // Getting Form Value
+    const form = document.getElementById("form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      quality = output.innerHTML;
+      console.log(quality);
+      ipcRenderer.send("form:value", { sliderValue });
+    });
   </script>
 </html>
