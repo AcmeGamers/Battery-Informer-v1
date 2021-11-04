@@ -113,6 +113,15 @@ app.on("ready", () => {
   mainWindow.on("ready", () => (mainWindow = null));
 });
 
+// Sleep Functions
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 ///////////////////////
 // Battery Main Process
 ///////////////////////
@@ -127,13 +136,17 @@ batteryLevel().then((level) => {
 
   console.log(totalBattery);
 
-  // if (mainWindow) {
-  //   mainWindow.close();
-  // }
-
-  // if (totalBattery > 50) {
-  //   notificationPage();
-  // }
+  while (mainWindow) {
+    notificationWindow.close();
+  }
+  if (!mainWindow) {
+    while (true) {
+      if (totalBattery > 50) {
+        notificationPage();
+      }
+      sleep(10000);
+    }
+  }
 });
 
 ///////////////////
