@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/materialize.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body style="background: #fafafa">
     <div>
-      <h2>Settings</h2>
+      <h3>Settings</h3>
       <button id="close-btn" onclick="window.close()">
         <i class="fas fa-times"></i>
       </button>
@@ -25,17 +26,43 @@
     <div>
       <p>Set Limit</p>
       <!-- Default Slider -->
-      <input
-        class="mdl-slider mdl-js-slider"
-        type="range"
-        min="0"
-        max="100"
-        value="90"
-        tabindex="0"
-      />
+
+      <div class="slidecontainer">
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="myRange"
+        />
+        <p>Value: <span id="demo"></span></p>
+      </div>
     </div>
-    <button>Accept</button>
-    <button id="close-btn" onclick="window.close()">Cancel</button>
+
+    <!-- Accent-colored flat button -->
+    <button
+      class="mdl-button mdl-js-button mdl-button--accent"
+      onclick="window.close()"
+    >
+      Cancel
+    </button>
+    <!-- Colored raised button -->
+    <button
+      class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+      onclick="window.close()"
+    >
+      Accept
+    </button>
   </body>
   <script src="./mdl/material.min.js"></script>
+  <script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+      output.innerHTML = this.value;
+    };
+  </script>
 </html>
