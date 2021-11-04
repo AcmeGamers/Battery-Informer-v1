@@ -118,7 +118,7 @@ app.on("ready", () => {
 ///////////////////////
 
 ipcMain.on("form:value", (e, options) => {
-  console.log(options);
+  console.log(options.sliderValue);
 });
 
 const batteryLevel = require("battery-level");

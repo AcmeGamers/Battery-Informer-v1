@@ -42,7 +42,7 @@
           type="range"
           min="1"
           max="100"
-          value="50"
+          value="90"
           class="slider"
           id="myRange"
         />
@@ -71,6 +71,7 @@
         >
           Accept
         </button>
+        <div id="result"></div>
       </div>
     </form>
   </body>
@@ -78,10 +79,13 @@
   <script>
     const { ipcRenderer } = require("electron");
 
+    // Setting the Initial Save Number
+    document.getElementById("myRange").value = localStorage.getItem("value");
     // Slider
     var slider = document.getElementById("myRange");
     var output = document.getElementById("rangeValue");
-    sliderValue = output.innerHTML = slider.value;
+
+    output.innerHTML = slider.value;
 
     slider.oninput = function () {
       output.innerHTML = this.value;
@@ -91,9 +95,10 @@
     const form = document.getElementById("form");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      quality = output.innerHTML;
-      console.log(quality);
+      sliderValue = slider.value;
+      console.log(slider.value);
       ipcRenderer.send("form:value", { sliderValue });
+      localStorage.setItem("value", slider.value);
     });
   </script>
 </html>
