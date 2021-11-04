@@ -29,37 +29,35 @@
       </button>
     </div>
 
-    <div style="display: flex; margin: 2rem 0; align-items: center">
-      <p>Set Limit</p>
-      <!-- Default Slider -->
-
-      <div class="slidecontainer">
-        <input
-          type="range"
-          min="1"
-          max="100"
-          value="50"
-          class="slider"
-          id="myRange"
-        />
-        <p>Value: <span id="demo"></span></p>
-      </div>
+    <div
+      class="slidecontainer"
+      style="display: flex; align-items: center; width: 90%"
+    >
+      <p style="width: 6rem; margin: 0">Set Limit</p>
+      <input
+      style="padding: 0 1rem;"
+        type="range"
+        min="1"
+        max="100"
+        value="50"
+        class="slider"
+        id="myRange"
+      />
+      <span id="demo"></span>
     </div>
 
-    <!-- Accent-colored flat button -->
     <button
       class="mdl-button mdl-js-button mdl-button--accent"
       onclick="window.close()"
     >
       Cancel
     </button>
-    <!-- Colored raised button -->
+
     <button
       class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
       onclick="window.close()"
     >
       Accept
-    </button>
   </body>
   <script src="./mdl/material.min.js"></script>
   <script>
