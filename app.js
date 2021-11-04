@@ -123,15 +123,6 @@ app.on("ready", () => {
   mainWindow.on("ready", () => (mainWindow = null));
 });
 
-// Sleep Functions
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
 ///////////////////
 // Application Menu
 ///////////////////
@@ -205,11 +196,6 @@ app.whenReady().then(() => {
 ///////////////////////
 // Battery Main Process
 ///////////////////////
-
-ipcMain.on("form:value", (e, options) => {
-  console.log(options.sliderValue);
-});
-
 const batteryLevel = require("battery-level");
 batteryLevel().then((level) => {
   var totalBattery = level * 100;
@@ -218,8 +204,15 @@ batteryLevel().then((level) => {
 
   setInterval(function () {
     //this code runs every second
-    if (totalBattery > 50) {
+
+    if (totalBattery > 30) {
       notificationPage();
     }
-  }, 5000);
+  }, 1200000);
+  // 5000 5secs
+  // 1200000 20mins
+});
+
+ipcMain.on("form:value", (e, options) => {
+  console.log(options.sliderValue);
 });
