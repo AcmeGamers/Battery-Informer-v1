@@ -205,7 +205,7 @@ batteryLevel().then((level) => {
   setInterval(function () {
     //this code runs every second
 
-    if (totalBattery > 30) {
+    if (totalBattery > 90) {
       notificationPage();
     }
   }, 1200000);
