@@ -25,7 +25,7 @@ function runApplication() {
   mainWindow = new BrowserWindow({
     icon: icon,
     title: "Battery Informer",
-    height: 300,
+    height: 230,
     width: 400,
 
     resizable: false,
@@ -78,8 +78,8 @@ function settingsPage() {
   settingsWindow = new BrowserWindow({
     title: "Settings",
     icon: icon,
-    height: 600,
-    width: 800,
+    height: 230,
+    width: 400,
     resizable: false,
     frame: false,
   });
