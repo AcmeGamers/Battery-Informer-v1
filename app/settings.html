@@ -77,15 +77,9 @@
   </body>
   <script src="./mdl/material.min.js"></script>
   <script>
-    const { ipcRenderer } = require("electron");
+    const ipcRenderer = require("electron");
 
     // Setting the Initial Save Number
-    var conditionOne = true;
-    if (conditionOne) {
-      console.log(document.getElementById("myRange").value);
-      localStorage.setItem("value", 90);
-      conditionOne = false;
-    }
     document.getElementById("myRange").value = localStorage.getItem("value");
 
     // Slider

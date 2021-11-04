@@ -99,6 +99,10 @@ function settingsPage() {
     width: 400,
     resizable: false,
     frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
   });
   settingsWindow.center();
   settingsWindow.loadFile("./app/settings.html");
