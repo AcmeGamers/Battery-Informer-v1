@@ -17,7 +17,12 @@
   </head>
   <body style="background: #fafafa">
     <div
-      style="display: flex; flex-direction: row; justify-content: space-between"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 0 2rem;
+      "
     >
       <h3>Settings</h3>
       <button
@@ -35,7 +40,7 @@
     >
       <p style="width: 6rem; margin: 0">Set Limit</p>
       <input
-      style="padding: 0 1rem;"
+        style="padding: 0 1rem; border: 0"
         type="range"
         min="1"
         max="100"
@@ -45,19 +50,21 @@
       />
       <span id="demo"></span>
     </div>
+    <div style="margin: 2rem 0; text-align: right">
+      <button
+        class="mdl-button mdl-js-button mdl-button--accent"
+        onclick="window.close()"
+      >
+        Cancel
+      </button>
 
-    <button
-      class="mdl-button mdl-js-button mdl-button--accent"
-      onclick="window.close()"
-    >
-      Cancel
-    </button>
-
-    <button
-      class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-      onclick="window.close()"
-    >
-      Accept
+      <button
+        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+        onclick="window.close()"
+      >
+        Accept
+      </button>
+    </div>
   </body>
   <script src="./mdl/material.min.js"></script>
   <script>
