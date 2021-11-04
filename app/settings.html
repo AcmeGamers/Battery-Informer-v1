@@ -16,14 +16,20 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body style="background: #fafafa">
-    <div>
+    <div
+      style="display: flex; flex-direction: row; justify-content: space-between"
+    >
       <h3>Settings</h3>
-      <button id="close-btn" onclick="window.close()">
+      <button
+        id="close-btn"
+        style="background: none; border: none; cursor: pointer"
+        onclick="window.close()"
+      >
         <i class="fas fa-times"></i>
       </button>
     </div>
 
-    <div>
+    <div style="display: flex; margin: 2rem 0; align-items: center">
       <p>Set Limit</p>
       <!-- Default Slider -->
 
