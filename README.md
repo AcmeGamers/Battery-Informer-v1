@@ -10,3 +10,4 @@
 ## Things To Fix/Add
 * Automatic Updates
 * Custom Limits
+* Adding More Security
