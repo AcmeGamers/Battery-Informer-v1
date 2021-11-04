@@ -216,18 +216,10 @@ batteryLevel().then((level) => {
 
   console.log(totalBattery);
 
-  // while (mainWindow) {
-  //   notificationWindow.close();
-  // }
-  while (true) {
-    while (!mainWindow) {
-      if (totalBattery > 50) {
-        notificationPage();
-      }
-      console.log("Sleep Process 1");
-      sleep(10000);
+  setInterval(function () {
+    //this code runs every second
+    if (totalBattery > 50) {
+      notificationPage();
     }
-    console.log("Sleep Process 2");
-    sleep(10000);
-  }
+  }, 5000);
 });
