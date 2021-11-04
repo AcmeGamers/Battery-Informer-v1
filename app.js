@@ -44,7 +44,7 @@ function runApplication() {
   });
   mainWindow.center();
   // isDev ? mainWindow.webContents.openDevTools() : null;
-  mainWindow.loadFile("./app/settings.html");
+  mainWindow.loadFile("./app/home.html");
 
   // Hiding the Main Window
   mainWindow.on("close", (event) => {
@@ -215,4 +215,10 @@ batteryLevel().then((level) => {
 
 ipcMain.on("form:value", (e, options) => {
   console.log(options.sliderValue);
+});
+
+// Starting on System Startup
+_electron.app.setLoginItemSettings({
+  openAtLogin: true,
+  path: _electron.app.getPath("exe"),
 });
