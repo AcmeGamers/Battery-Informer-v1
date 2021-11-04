@@ -186,7 +186,7 @@ app.whenReady().then(() => {
   tray = new Tray(icon);
   const contextMenu = Menu.buildFromTemplate([
     { label: "About", click: () => aboutPage() },
-    { label: "Settings", click: () => notificationPage() },
+    { label: "Settings", click: () => settingsPage() },
     { label: "Exit", click: () => app.quit() },
   ]);
   tray.setToolTip("Bsttery Informer");
