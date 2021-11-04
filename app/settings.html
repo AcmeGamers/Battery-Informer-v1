@@ -82,6 +82,7 @@
     // Setting the Initial Save Number
     var conditionOne = true;
     if (conditionOne) {
+      console.log(document.getElementById("myRange").value);
       localStorage.setItem("value", 90);
       conditionOne = false;
     }
@@ -103,8 +104,8 @@
       e.preventDefault();
       sliderValue = slider.value;
       console.log(slider.value);
-      ipcRenderer.send("form:value", { sliderValue });
       localStorage.setItem("value", slider.value);
+      ipcRenderer.send("form:value", { sliderValue });
     });
   </script>
 </html>
