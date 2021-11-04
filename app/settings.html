@@ -63,16 +63,15 @@
 
         <button
           type="submit"
-          onclick="window.close()"
           class="
             mdl-button mdl-js-button
             mdl-button--raised mdl-button--colored
             mdl-js-ripple-effect
           "
+          onclick="window.close()"
         >
           Accept
         </button>
-        <div id="result"></div>
       </div>
     </form>
   </body>
@@ -81,7 +80,13 @@
     const { ipcRenderer } = require("electron");
 
     // Setting the Initial Save Number
+    var conditionOne = true;
+    if (conditionOne) {
+      localStorage.setItem("value", 90);
+      conditionOne = false;
+    }
     document.getElementById("myRange").value = localStorage.getItem("value");
+
     // Slider
     var slider = document.getElementById("myRange");
     var output = document.getElementById("rangeValue");
