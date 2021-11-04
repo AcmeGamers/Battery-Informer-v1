@@ -45,6 +45,16 @@ function runApplication() {
   mainWindow.center();
   // isDev ? mainWindow.webContents.openDevTools() : null;
   mainWindow.loadFile("./app/settings.html");
+
+  // Hiding the Main Window
+  mainWindow.on("close", (event) => {
+    if (app.quitting) {
+      mainWindow = null;
+    } else {
+      event.preventDefault();
+      mainWindow.hide();
+    }
+  });
 }
 
 //////////////////
