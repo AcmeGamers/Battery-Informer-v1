@@ -139,8 +139,12 @@ const menu = [
     ? [
         { role: "appMenu" },
         {
-          label: app.name,
-          submenu: [{ label: "About " + app.name, click: () => aboutPage() }],
+          label: "File",
+          submenu: [
+            { label: "About " + app.name, click: () => aboutPage() },
+            { type: "separator" },
+            { label: "Settings", click: () => settingsPage() },
+          ],
         },
       ]
     : [
