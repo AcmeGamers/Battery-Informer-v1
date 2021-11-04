@@ -32,7 +32,7 @@ function runApplication() {
   mainWindow = new BrowserWindow({
     icon: icon,
     title: "Battery Informer",
-    height: 230,
+    height: 400,
     width: 400,
 
     resizable: false,
@@ -44,7 +44,7 @@ function runApplication() {
   });
   mainWindow.center();
   // isDev ? mainWindow.webContents.openDevTools() : null;
-  mainWindow.loadFile("./app/home.html");
+  mainWindow.loadFile("./app/start.html");
 
   // Hiding the Main Window
   mainWindow.on("close", (event) => {
@@ -218,7 +218,7 @@ ipcMain.on("form:value", (e, options) => {
 });
 
 // Starting on System Startup
-_electron.app.setLoginItemSettings({
-  openAtLogin: true,
-  path: _electron.app.getPath("exe"),
-});
+// _electron.app.setLoginItemSettings({
+//   openAtLogin: true,
+//   path: _electron.app.getPath("exe"),
+// });

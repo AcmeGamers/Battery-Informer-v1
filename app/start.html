@@ -2,3 +2,46 @@
     Will Carry a loading screen GIF
     Then a start button
  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./mdl/material.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+      "
+    >
+      <img src="../assets/battery-bar.png" width="250" alt="" />
+      <!-- MDL Progress Bar with Buffering -->
+      <div
+        id="p3"
+        style="max-width: 60%; margin-top: 50px"
+        class="mdl-progress mdl-js-progress"
+      ></div>
+    </div>
+
+    <script>
+      document
+        .querySelector("#p3")
+        .addEventListener("mdl-componentupgraded", function () {
+          this.MaterialProgress.setProgress(33);
+          this.MaterialProgress.setBuffer(87);
+        });
+    </script>
+  </body>
+  <script src="./mdl/material.min.js"></script>
+</html>
