@@ -6,7 +6,7 @@ const {
   Tray,
   ipcMain,
 } = require("electron");
-
+const AutoLaunch = require("auto-launch");
 process.env.NODE_ENV = "production"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
   isMac = process.env.NODE_ENV === "darwin" ? true : false,
@@ -125,6 +125,15 @@ app.on("ready", () => {
   globalShortcut.register("CmdOrCtrl+W", () => app.quit());
 
   mainWindow.on("ready", () => (mainWindow = null));
+
+  // Auto-Launch
+  let autoLaunch = new AutoLaunch({
+    name: "Battery Informer",
+    path: app.getPath("exe"),
+  });
+  autoLaunch.isEnabled().then((isEnabled) => {
+    if (!isEnabled) autoLaunch.enable();
+  });
 });
 
 ///////////////////
