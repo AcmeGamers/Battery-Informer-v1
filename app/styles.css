@@ -56,3 +56,16 @@ h3 {
   background: #04aa6d; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
+
+.mdl-progress > .progressbar {
+  background-color: #a1b963;
+}
+
+.mdl-progress > .bufferbar {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    linear-gradient(to right, #a1b963, #a1b963);
+}
