@@ -132,33 +132,6 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
-///////////////////////
-// Battery Main Process
-///////////////////////
-
-ipcMain.on("form:value", (e, options) => {
-  console.log(options.sliderValue);
-});
-
-const batteryLevel = require("battery-level");
-batteryLevel().then((level) => {
-  var totalBattery = level * 100;
-
-  console.log(totalBattery);
-
-  while (mainWindow) {
-    notificationWindow.close();
-  }
-  if (!mainWindow) {
-    while (true) {
-      if (totalBattery > 50) {
-        notificationPage();
-      }
-      sleep(10000);
-    }
-  }
-});
-
 ///////////////////
 // Application Menu
 ///////////////////
@@ -227,4 +200,34 @@ app.whenReady().then(() => {
   ]);
   tray.setToolTip("Bsttery Informer");
   tray.setContextMenu(contextMenu);
+});
+
+///////////////////////
+// Battery Main Process
+///////////////////////
+
+ipcMain.on("form:value", (e, options) => {
+  console.log(options.sliderValue);
+});
+
+const batteryLevel = require("battery-level");
+batteryLevel().then((level) => {
+  var totalBattery = level * 100;
+
+  console.log(totalBattery);
+
+  // while (mainWindow) {
+  //   notificationWindow.close();
+  // }
+  while (true) {
+    while (!mainWindow) {
+      if (totalBattery > 50) {
+        notificationPage();
+      }
+      console.log("Sleep Process 1");
+      sleep(10000);
+    }
+    console.log("Sleep Process 2");
+    sleep(10000);
+  }
 });
