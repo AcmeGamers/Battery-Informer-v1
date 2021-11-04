@@ -7,7 +7,7 @@
 
  Battery Notifier
  Copyright (c) 2021 AcmeGamers
- contact: acmegamers97@gmail.com
+ Contact: acmegamers97@gmail.com
  
                             Preamble
 
