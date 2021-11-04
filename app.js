@@ -7,7 +7,7 @@ const {
   ipcMain,
 } = require("electron");
 const AutoLaunch = require("auto-launch");
-process.env.NODE_ENV = "production"; //development
+process.env.NODE_ENV = "development"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
   isMac = process.env.NODE_ENV === "darwin" ? true : false,
   isWin = process.env.NODE_ENV === "win32" ? true : false,
@@ -102,6 +102,7 @@ function settingsPage() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      // preload: "./preload.js",
     },
   });
   settingsWindow.center();
