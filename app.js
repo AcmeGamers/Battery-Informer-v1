@@ -163,6 +163,7 @@ const menu = [
           submenu: [
             { label: "About Battery Informer", click: () => aboutPage() },
             { label: "Notification Page", click: () => notificationPage() },
+            { type: "separator" },
             { label: "Settings", click: () => settingsPage() },
           ],
         },
@@ -191,6 +192,7 @@ app.whenReady().then(() => {
   const contextMenu = Menu.buildFromTemplate([
     { label: "About", click: () => aboutPage() },
     { label: "Settings", click: () => settingsPage() },
+    { type: "separator" },
     {
       label: "Exit",
       click: () => {
