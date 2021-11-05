@@ -214,7 +214,7 @@ app.whenReady().then(() => {
       },
     },
   ]);
-  tray.setToolTip("Bsttery Informer");
+  tray.setToolTip("Battery Informer");
   tray.setContextMenu(contextMenu);
 });
 
