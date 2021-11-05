@@ -186,10 +186,9 @@ const menu = [
           // role:"fileMenu"
         },
         {
-          label: "Help",
+          label: "Info",
           submenu: [
             { label: "About Battery Informer", click: () => aboutPage() },
-            { label: "Notification Page", click: () => notificationPage() },
             { type: "separator" },
             { label: "Settings", click: () => settingsPage() },
           ],
@@ -201,6 +200,7 @@ const menu = [
         {
           label: "Developer Tools",
           submenu: [
+            { label: "Notification Page", click: () => notificationPage() },
             { role: "reload" },
             { role: "forcereload" },
             { type: "separator" }, // Making a line in the menu

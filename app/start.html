@@ -20,7 +20,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
   </head>
-  <body style="padding: 0">
+  <body style="padding: 0; user-select: none">
     <div
       style="
         display: flex;
@@ -30,7 +30,18 @@
         justify-content: center;
       "
     >
-      <img src="../assets/battery-bar.png" width="250" alt="" />
+      <img
+        style="
+          -webkit-user-drag: none;
+          -khtml-user-drag: none;
+          -moz-user-drag: none;
+          -o-user-drag: none;
+          user-drag: none;
+        "
+        src="../assets/battery-bar.png"
+        width="250"
+        alt=""
+      />
       <!-- MDL Progress Bar with Buffering -->
       <div
         id="p3"
