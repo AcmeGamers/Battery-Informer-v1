@@ -1,7 +1,7 @@
 {
   "name": "battery-informer-wu-react",
-  "version": "1.0.0",
-  "description": "Battery Informer, Material UI App",
+  "version": "1.0.1",
+  "description": "An application that informs you of your device battery reaching higher than 90%.",
   "main": "app.js",
   "scripts": {
     "start": "electron ."
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/AcmeGamers/battery-informer-wu-react.git"
   },
   "author": "Acme Gamers",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/AcmeGamers/battery-informer-wu-react/issues"
   },
