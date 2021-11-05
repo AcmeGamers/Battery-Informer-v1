@@ -5,9 +5,7 @@ const {
   globalShortcut,
   Tray,
   ipcMain,
-  session,
 } = require("electron");
-
 const AutoLaunch = require("auto-launch");
 process.env.NODE_ENV = "development"; //development
 const isDev = process.env.NODE_ENV !== "production" ? true : false,
@@ -40,7 +38,6 @@ function runApplication() {
     resizable: false,
     frame: false,
     webPreferences: {
-      sandbox: true,
       nodeIntegration: false,
       contextIsolation: true,
     },
@@ -70,11 +67,6 @@ function aboutPage() {
     width: 350,
     height: 400,
     resizable: false,
-    webPreferences: {
-      sandbox: true,
-      nodeIntegration: false,
-      contextIsolation: true,
-    },
   });
   aboutWindow.loadFile("./app/about.html");
 }
@@ -91,11 +83,6 @@ function notificationPage() {
     width: 428,
     resizable: false,
     frame: false,
-    webPreferences: {
-      sandbox: true,
-      nodeIntegration: false,
-      contextIsolation: true,
-    },
   });
   notificationWindow.center();
   notificationWindow.loadFile("./app/notification.html");
@@ -113,9 +100,9 @@ function settingsPage() {
     resizable: false,
     frame: false,
     webPreferences: {
-      sandbox: true,
       nodeIntegration: false,
       contextIsolation: true,
+      // preload: "./preload.js",
     },
   });
   settingsWindow.center();
@@ -149,24 +136,6 @@ app.on("ready", () => {
     if (!isEnabled) autoLaunch.enable();
   });
 });
-
-// Sessions
-session
-  .fromPartition("some-partition")
-  .setPermissionRequestHandler((webContents, permission, callback) => {
-    const url = webContents.getURL();
-
-    if (permission === "notifications") {
-      // Approves the permissions request
-      callback(false);
-    }
-
-    // Verify URL
-    if (!url.startsWith("https://am-designers.pw/")) {
-      // Denies the permissions request
-      return callback(false);
-    }
-  });
 
 ///////////////////
 // Application Menu
@@ -264,7 +233,7 @@ batteryLevel().then((level) => {
     if (totalBattery > 90) {
       notificationPage();
     }
-  }, 1200000);
+  }, 420000); // 7mins
   // 5000 5secs
   // 1200000 20mins
 });
