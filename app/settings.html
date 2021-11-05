@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline'"
+    />
     <title>Settings</title>
     <link rel="stylesheet" href="./mdl/material.min.css" />
 
@@ -79,7 +82,7 @@
   </body>
   <script src="./mdl/material.min.js"></script>
   <script>
-    const ipcRenderer = require("electron");
+    // const ipcRenderer = require("electron");
 
     // Setting the Initial Save Number
     document.getElementById("myRange").value = localStorage.getItem("value");
@@ -101,7 +104,7 @@
       sliderValue = slider.value;
       console.log(slider.value);
       localStorage.setItem("value", slider.value);
-      ipcRenderer.send("form:value", { sliderValue });
+      // ipcRenderer.send("form:value", { sliderValue });
     });
   </script>
 </html>
