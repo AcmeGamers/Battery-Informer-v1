@@ -111,8 +111,9 @@ function settingsPage() {
 }
 
 // Notification Alert On StartUp
+app.setAppUserModelId("Battery Notifier");
 const NOTIFICATION_TITLE = "Battery Notifier Active";
-const NOTIFICATION_BODY = "Battery Notifier is now active in the background.";
+const NOTIFICATION_BODY = "Application is now active in the background.";
 
 function showNotification() {
   new Notification({
@@ -135,7 +136,7 @@ app.on("ready", () => {
   Menu.setApplicationMenu(mainmenu);
 
   // Quit Menu
-  globalShortcut.register("CmdOrCtrl+W", () => app.quit());
+  // globalShortcut.register("CmdOrCtrl+W", () => app.quit());
 
   mainWindow.on("ready", () => (mainWindow = null));
 
