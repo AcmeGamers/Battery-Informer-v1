@@ -5,9 +5,8 @@
 * Informs when battery reaches a limit
 * Material UI Interface
 * Auto Background Process
-
+* Adding More Security
 
 ## Things To Fix/Add
 * Automatic Updates
 * Custom Limits
-* Adding More Security
