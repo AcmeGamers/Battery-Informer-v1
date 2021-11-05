@@ -5,6 +5,7 @@ const {
   globalShortcut,
   Tray,
   ipcMain,
+  Notification,
 } = require("electron");
 const AutoLaunch = require("auto-launch");
 process.env.NODE_ENV = "production"; //development
@@ -109,13 +110,24 @@ function settingsPage() {
   settingsWindow.loadFile("./app/settings.html");
 }
 
+// Notification Alert On StartUp
+const NOTIFICATION_TITLE = "Battery Notifier Active";
+const NOTIFICATION_BODY = "Battery Notifier is now active in the background.";
+
+function showNotification() {
+  new Notification({
+    title: NOTIFICATION_TITLE,
+    body: NOTIFICATION_BODY,
+  }).show();
+}
+
 ///////////////////////
 // Starting Application
 ///////////////////////
 
 app.on("ready", () => {
   runApplication();
-
+  showNotification();
   // The Menu to be Made
   const mainmenu = Menu.buildFromTemplate(menu);
 
@@ -241,9 +253,3 @@ batteryLevel().then((level) => {
 ipcMain.on("form:value", (e, options) => {
   console.log(options.sliderValue);
 });
-
-// Starting on System Startup
-// _electron.app.setLoginItemSettings({
-//   openAtLogin: true,
-//   path: _electron.app.getPath("exe"),
-// });
