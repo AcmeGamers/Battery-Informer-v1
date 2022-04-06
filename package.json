@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/AcmeGamers/battery-informer-wu-react#readme",
   "dependencies": {
-    "@xmldom/xmldom": "^0.8.0",
+    "@xmldom/xmldom": "^0.8.1",
     "auto-launch": "^5.0.5",
     "battery-level": "^3.0.0",
-    "electron": "^16.0.0",
+    "electron": "^16.2.0",
     "electron-packager": "^15.4.0",
-    "prismjs": "^1.25.0",
+    "prismjs": "^1.27.0",
     "yarn-upgrade-all": "^0.6.1"
   }
 }
