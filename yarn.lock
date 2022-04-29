@@ -394,7 +394,7 @@ electron@^16.2.2:
   version "16.2.4"
   resolved "https://registry.yarnpkg.com/electron/-/electron-16.2.4.tgz#4e4c72a615b37570fcc38b74b2bcbab585a42575"
   integrity sha512-A40aU+gh41EtyspwEBMSuy5KBB56Z8OYSDsqZK9Y8nJdVIFKDtp824x/jnU7N6zNnzVil6oDIFBMGp/hkFu6FQ==
-  dependencies:
+dependencies:
     "@electron/get" "^1.13.0"
     "@types/node" "^14.6.2"
     extract-zip "^1.0.3"
