@@ -23,6 +23,6 @@
     "electron": "^16.2.2",
     "electron-packager": "^15.4.0",
     "prismjs": "^1.27.0",
-    "yarn-upgrade-all": "^0.6.1"
+    "yarn-upgrade-all": "^0.7.0"
   }
 }
